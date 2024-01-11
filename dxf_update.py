@@ -54,8 +54,17 @@ def main():
     files = list_files(folder_path)
 
     # Print the list of files with their extensions and last update date
+    '''for ind, file_info in enumerate(files):
+        print(f"Item {ind} | File: {file_info['file_name']} | Date_DXF {file_info['last_update_datetime_dxf']} | Date_prs: {file_info['last_update_datetime_prs']}")'''
+    
+    prob = []
+
     for file_info in files:
-        print(f"File: {file_info['file_name']} | Date_DXF {file_info['last_update_datetime_dxf']} | Date_prs: {file_info['last_update_datetime_prs']}")
+        if file_info['last_update_datetime_prs'] < file_info['last_update_datetime_dxf']:
+            prob.append(file_info)
+    
+    for ind, item in enumerate(prob):
+        print(f'Item {ind} - Verificar código {item['file_name']}')
     
     #print(files)
 
